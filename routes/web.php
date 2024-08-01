@@ -10,12 +10,12 @@ use App\Http\Controllers\UploadController;
 use App\Http\Controllers\FeeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AwarenessController;
-use Auth;
+// use Auth;
 
 Route::view('/codeview','codeview');
 
 //================ CRUD Candidate =====================
-Route::group(['prefix'=> 'candidate', 'middleware' => ['auth']], function () {
+Route::group(['prefix'=> 'candidate'], function () {
 Route::view('/create','d-panel.createCand')->name('create.candidate');
 Route::POST('/create',[CandController::class,'create'])->name('createCandidate');
 
@@ -46,7 +46,7 @@ Route::POST('/candidate/issue',[CandController::class,'issue'])->name('issueCert
 Route::POST('/verifyCert',[CandController::class,'verifyCert'])->name('verifyCert');
 
 //================= Fee Portal ===============================
-Route::group(['prefix' => 'fee', 'middleware' => ['auth']], function () {
+Route::group(['prefix' => 'fee'], function () {
 // Route::view('/fee/create', 'd-panel.feeRecord')->name('createFeeRecord');
 Route::GET('/create', [CandController::class, 'createFeeRecord'])->name('createFeeRecord');
 Route::POST('/create', [CandController::class, 'feePayment'])->name('feePayment');
@@ -56,10 +56,10 @@ Route::POST('/verify', [CandController::class, 'verifyFee'])->name('verifyFee');
 });
 //=================================================================================
 
-// Route::view('/signupAdmin', 'signupAdmin');
-// Route::POST('/signupAdmin', [AdminController::class, 'createAdmin'])->name('signupAdmin');
+Route::view('/signupAdmin', 'signupAdmin');
+Route::POST('/signupAdmin', [AdminController::class, 'createAdmin'])->name('signupAdmin');
 
-Route::view('/login', 'loginAdmin')->name('login');
+Route::view('/', 'loginAdmin')->name('login');
 Route::POST('/loginAdmin', [AdminController::class,'AuthAdmin'])->name('loginAdmin');
 
 Route::GET('/logout', function () {

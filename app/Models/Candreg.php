@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Candreg extends Model
 {
    protected $fillable = [
-    'studentID', 'name', 'pname', 'session', 'gender', 'birthDate', 'course', 'phoneNumber', 'address', 'a-card', 'admissionDate', 'certNumber', 'status', 'mode',
+    'studentID', 'name', 'pname', 'session', 'gender', 'birthDate', 'course', 'phoneNumber', 'address', 'a-card', 'admissionDate', 'certNumber', 'status', 'mode', 'session',
    ];
    
    public function fee_records(){
